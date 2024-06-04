@@ -1,6 +1,17 @@
-let grid = document.querySelector(".grid");
+const defaultSideLength = 16;
 
-function createTiles (height, width) {
+const body = document.querySelector("body");
+const btn = document.querySelector(".btn");
+
+btn.addEventListener("click", () => {
+  let sideLength = prompt("Enter side length for new grid:");
+  body.removeChild(body.lastElementChild);
+  createGrid(sideLength, sideLength);
+});
+
+function createGrid (height, width) {
+  let grid = document.createElement("div");
+  grid.classList.add("grid");
   for (let i = 0; i < height; i++) {
     let row = document.createElement("div");
     row.classList.add("row");
@@ -13,6 +24,7 @@ function createTiles (height, width) {
     }
     grid.appendChild(row);
   }
+  body.appendChild(grid);
 }
 
-createTiles(16, 16);
+createGrid(defaultSideLength, defaultSideLength);
